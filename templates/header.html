@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>UWMCCF</title>
-  	<!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
   </head>
+
   <body>
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
       <div class="title">
@@ -28,7 +29,7 @@
               <a href="../events/">Events</a>
             </li>
             <li>
-              <a href="prayer_wall.html">Prayer Wall</a>
+              <a href="../prayer-wall">Prayer Wall</a>
             </li>
             <li class="disabled">
               <a href="../resources/">Resources</a>
@@ -43,6 +44,8 @@
         </nav>
       </div>
     </header>
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
   </body>
-  <!-- This is where the content of the page go. -->
 </html>
