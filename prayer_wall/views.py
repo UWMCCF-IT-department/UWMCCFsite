@@ -16,13 +16,13 @@ def home(request):
         # return render_to_response('../templates/prayer_wall.html', RequestContext(request))
         return render(request, 'prayer_wall.html', context)
     elif request.method == 'POST':
-        prayerRequest = str(request.POST['prayer-request'])
+        prayerRequest = unicode(request.POST['prayer-request'])
         name = ''
         email = ''
         if 'prayer-name' in request.POST:
-            name = str(request.POST['prayer-name'])
+            name = unicode(request.POST['prayer-name'])
         if 'prayer-email' in request.POST:
-            email = str(request.POST['prayer-email'])
+            email = unicode(request.POST['prayer-email'])
         req = PrayerRequest(name=name, email=email, request=prayerRequest, count=0)
         req.save()
         prayer_requests = []
