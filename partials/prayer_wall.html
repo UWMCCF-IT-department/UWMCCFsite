@@ -1,10 +1,11 @@
 {% extends "header.html" %}
-  <!-- This is where the content of the page go. -->
-  {% block content %}
-  {% load djangular_tags %}
+<!-- This is where the content of the page go. -->
+{% block content %}
+{% load djangular_tags %}
+{% angularjs %}
+<body ng-app="myApp" ng-controller="PrayerController">
   <script src="/static/js/controller.js"></script>
-  <body>
-    <hr>
+  <hr>
 
   <!-- Button trigger modal --> 
   <div class="form-group">
@@ -20,50 +21,47 @@
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
+          <form role="form" ng-submit="addPrayerRequest()">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Prayer Requests</h4>
         </div>
         <div class="modal-body">
-          <form role="form">
             <div class="form-group">
               <label for="name">Name:</label>
-              <input type="text" class="form-control" id="name" placeholder="Name">
+              <input type="text" class="form-control" id="name" placeholder="Name" ng-model="form.name">
             </div>
             <div class="form-group">
               <label for="email">Email:</label>
-              <input type="email" class="form-control" id="email" placeholder="Email">
+              <input type="email" class="form-control" id="email" placeholder="Email" ng-model="form.email">
             </div>
                <div class="form-group">
               <label for="request">Share Request:</label>
-              <textarea type="text" class="form-control" id="request" placeholder="Request" rows="5" required></textarea>
+              <textarea type="text" class="form-control" id="request" placeholder="Request" rows="5" required ng-model="form.prayer_request"></textarea>
             </div>
-          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+          </form>
       </div>
     </div>
   </div>
-  {% angularjs %}
-  <div class="container" ng-app="myApp" ng-controller="PrayerController">
+  <div class="container">
     <div class="row">
       <div>
-        Prayer Request post by:
-        <input type="search" ng-model="q" placeholder="name" aria-label="filter prayer_requests" />
         <ul class="animate-container">
-          <li class="animate-repeat" ng-repeat="prayer_request in prayer_requests track by $index | filter:q as results">
-            {{prayer_request.name}} request {{prayer_request.request}}.
+          <li class="animate-repeat" ng-repeat="prayer_request in prayer_requests">
+             prayer request from {{prayer_request.fields.name}}: {{prayer_request.fields.request}}. {{prayer_request.fields.count}} people have beeing prayer for this.
           </li>
-          <li class="animate-repeat" ng-if="results.length == 0">
+          <li class="animate-repeat" ng-if="prayer_requests.length == 0">
             <strong>No paryer request</strong>
           </li>
         </ul>
       </div>
     </div> <!-- row -->
   </div>
-  {% endangularjs %}
 </body>
+{% endangularjs %}
 {% endblock %}
