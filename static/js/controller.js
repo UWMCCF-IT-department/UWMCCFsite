@@ -58,7 +58,7 @@ myApp.service(
 
             var request = $http({
                 method: "get",
-                url: "/prayer-wall/api_v1/prayer-requests",
+                url: "/prayer_wall/api_v1/prayer-requests",
                 params: {
                     action: "get"
                 }
@@ -71,7 +71,7 @@ myApp.service(
 
             var request = $http({
                 method: "post",
-                url: "/prayer-wall/api_v1/prayer-requests",
+                url: "/prayer_wall/api_v1/prayer-requests",
                 params: {
                     action: "add"
                 },
