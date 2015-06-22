@@ -23,3 +23,12 @@ def prayer_requests(request):
         req.save()
         all_prayer_request = serializers.serialize("json", PrayerRequest.objects.all())
         return HttpResponse(all_prayer_request)
+    elif request.method == 'PUT':
+        print "put"
+        requestInfo = json.loads(request.body)
+        prayerRequestID = requestInfo.get("id")
+        target = PrayerRequest.objects.get(pk=prayerRequestID)
+        target.count+=1
+        target.save()
+        all_prayer_request = serializers.serialize("json", PrayerRequest.objects.all())
+        return HttpResponse(all_prayer_request)

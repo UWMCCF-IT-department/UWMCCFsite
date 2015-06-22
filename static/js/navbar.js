@@ -19,45 +19,45 @@ window.addEventListener('load', function() {
 	var resource_meetingminute = document.getElementById('resource_meetingminute');
 	
 	console.log("here");
-	resource_button.addEventListener('click', function() {
-		resource_home.className = 'col-sm-8 col-sm-offset-2 active';
-		resource_outreach.className = 'hidden';
-		resource_specialeventplanning.className = 'hidden';
-		resource_bible.className = 'hidden';
-		resource_meetingminute.className = 'hidden';
-	});
+	// resource_button.addEventListener('click', function() {
+	// 	resource_home.className = 'col-sm-8 col-sm-offset-2 active';
+	// 	resource_outreach.className = 'hidden';
+	// 	resource_specialeventplanning.className = 'hidden';
+	// 	resource_bible.className = 'hidden';
+	// 	resource_meetingminute.className = 'hidden';
+	// });
 	
-	outreach_button.addEventListener('click', function() {
-		resource_home.className = 'hidden';
-		resource_outreach.className = 'col-sm-8 col-sm-offset-2 active';
-		resource_specialeventplanning.className = 'hidden';
-		resource_bible.className = 'hidden';
-		resource_meetingminute.className = 'hidden';
-	});
+	// outreach_button.addEventListener('click', function() {
+	// 	resource_home.className = 'hidden';
+	// 	resource_outreach.className = 'col-sm-8 col-sm-offset-2 active';
+	// 	resource_specialeventplanning.className = 'hidden';
+	// 	resource_bible.className = 'hidden';
+	// 	resource_meetingminute.className = 'hidden';
+	// });
 	
-	bible_button.addEventListener('click', function() {
-		resource_home.className = 'hidden';
-		resource_outreach.className = 'hidden';
-		resource_specialeventplanning.className = 'col-sm-8 col-sm-offset-2 active';
-		resource_bible.className = 'hidden';
-		resource_meetingminute.className = 'hidden';
-	});
+	// bible_button.addEventListener('click', function() {
+	// 	resource_home.className = 'hidden';
+	// 	resource_outreach.className = 'hidden';
+	// 	resource_specialeventplanning.className = 'col-sm-8 col-sm-offset-2 active';
+	// 	resource_bible.className = 'hidden';
+	// 	resource_meetingminute.className = 'hidden';
+	// });
 	
-	specialeventplanning_button.addEventListener('click', function() {
-		resource_home.className = 'hidden';
-		resource_outreach.className = 'hidden';
-		resource_specialeventplanning.className = 'hidden';
-		resource_bible.className = 'col-sm-8 col-sm-offset-2 active';
-		resource_meetingminute.className = 'hidden';
-	});
+	// specialeventplanning_button.addEventListener('click', function() {
+	// 	resource_home.className = 'hidden';
+	// 	resource_outreach.className = 'hidden';
+	// 	resource_specialeventplanning.className = 'hidden';
+	// 	resource_bible.className = 'col-sm-8 col-sm-offset-2 active';
+	// 	resource_meetingminute.className = 'hidden';
+	// });
 	
-	meetingminute_button.addEventListener('click', function() {
-		resource_home.className = 'hidden';
-		resource_outreach.className = 'hidden';
-		resource_specialeventplanning.className = 'hidden';
-		resource_bible.className = 'hidden';
-		resource_meetingminute.className = 'col-sm-8 col-sm-offset-2 active';
-	});
+	// meetingminute_button.addEventListener('click', function() {
+	// 	resource_home.className = 'hidden';
+	// 	resource_outreach.className = 'hidden';
+	// 	resource_specialeventplanning.className = 'hidden';
+	// 	resource_bible.className = 'hidden';
+	// 	resource_meetingminute.className = 'col-sm-8 col-sm-offset-2 active';
+	// });
 
 	
 });
