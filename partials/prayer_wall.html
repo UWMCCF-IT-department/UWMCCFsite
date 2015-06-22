@@ -54,6 +54,7 @@
         <ul class="animate-container">
           <li class="animate-repeat" ng-repeat="prayer_request in prayer_requests">
              prayer request from {{prayer_request.fields.name}}: {{prayer_request.fields.request}}. {{prayer_request.fields.count}} people have beeing prayer for this.
+             <button class="btn btn-primary btn-xs" ng-click="addCount(prayer_request.pk)" >Pray</button>
           </li>
           <li class="animate-repeat" ng-if="prayer_requests.length == 0">
             <strong>No paryer request</strong>

@@ -13,11 +13,6 @@ myApp.controller(
 		loadRemoteData();
         // I process the add-friend form.
         $scope.addPrayerRequest = function() {
-
-            // If the data we provide is invalid, the promise will be rejected,
-            // at which point we can tell the user that something went wrong. In
-            // this case, I'm just logging to the console to keep things very
-            // simple for the demo.
             prayerService.addPrayerRequest( $scope.form.name, $scope.form.email, $scope.form.prayer_request )
                 .then(
                     loadRemoteData,
@@ -25,10 +20,7 @@ myApp.controller(
                         console.warn( errorMessage );
                     },
                     $('#myModal').modal('hide')
-                )
-            ;
-
-            // Reset the form once values have been consumed.
+                );
             $scope.form.name = "";
             $scope.form.email = "";
             $scope.form.prayer_request = "";
@@ -38,11 +30,21 @@ myApp.controller(
 		function loadRemoteData() {
 			prayerService.getPrayerRequest()
             	.then(
-            		function( friends ) {
-                        console.log("test")
-            			$scope.prayer_requests = friends;
+            		function( prayerRequests ) {
+                        console.log(prayerRequests);
+            			$scope.prayer_requests = prayerRequests;
             		});
-        }
+        };
+
+        $scope.addCount = function(id) {
+            prayerService.prayerRequestCount(id)
+                .then(
+                    loadRemoteData,
+                    function( errorMessage ) {
+                        console.warn( errorMessage );
+                    }
+                );
+        };
 	});
 
 myApp.service(
@@ -51,9 +53,9 @@ myApp.service(
         // Return public API.
         return({
             getPrayerRequest: getPrayerRequest,            
-            addPrayerRequest: addPrayerRequest
+            addPrayerRequest: addPrayerRequest,
+            prayerRequestCount: prayerRequestCount
         });
-        // I get all of the friends in the remote collection.
         function getPrayerRequest() {
 
             var request = $http({
@@ -66,9 +68,7 @@ myApp.service(
             return( request.then( handleSuccess, handleError ) );
         }
 
-        // I add a friend with the given name to the remote collection.
         function addPrayerRequest( name, email, prayer_request ) {
-
             var request = $http({
                 method: "post",
                 url: "/prayer_wall/api_v1/prayer-requests",
@@ -82,7 +82,20 @@ myApp.service(
                 }
             });
             return( request.then( handleSuccess, handleError ) );
+        }
 
+        function prayerRequestCount( id ) {
+            var request = $http({
+                method: "put",
+                url: "/prayer_wall/api_v1/prayer-requests",
+                params: {
+                    action: "add_count"
+                },
+                data: {
+                    id: id
+                }
+            });
+            return( request.then( handleSuccess, handleError ) );
         }
 
 
@@ -100,15 +113,9 @@ myApp.service(
             // nomralized format. However, if the request was not handled by the
             // server (or what not handles properly - ex. server error), then we
             // may have to normalize it on our end, as best we can.
-            if (
-                ! angular.isObject( response.data ) ||
-                ! response.data.message
-                ) {
-
+            if (! angular.isObject( response.data ) || ! response.data.message) {
                 return( $q.reject( "An unknown error occurred." ) );
-
             }
-
             // Otherwise, use expected error message.
             return( $q.reject( response.data.message ) );
 
