@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$(window).bind('scroll', function() {
 		var navHeight = $("#title").height();
-        ($(window).scrollTop() > navHeight) ? $('#menu').addClass('goToTop') : $('#menu').removeClass('goToTop');
+        ($(window).scrollTop() => navHeight) ? $('#menu').addClass('goToTop') : $('#menu').removeClass('goToTop');
     });
 });
 

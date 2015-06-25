@@ -11,7 +11,7 @@ def home(request):
 
 def prayer_requests(request):
     if request.method == 'GET':
-        all_prayer_request = serializers.serialize("json", PrayerRequest.objects.all())
+        all_prayer_request = serializers.serialize("json", PrayerRequest.objects.all().order_by("timestamp").reverse())
         return HttpResponse(all_prayer_request)
     elif request.method == 'POST':
         print "test1"
