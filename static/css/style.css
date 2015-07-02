@@ -1,16 +1,15 @@
 .goToTop {
   position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
 	opacity: 0.90;
 }
 
 .navbar-center
 {
    position: absolute;
-   width: 100%;
    left: 30%;
    text-align: center;
    margin: auto;
@@ -22,3 +21,19 @@
   height: 100%;
 }
 
+.prayer-name{
+  margin-left: 20px;
+}
+.pray-count{
+  padding-right: 10px;
+}
+.pary-for-it{
+  margin-right: 20px;
+
+}
+.table>tbody>tr>td{
+  border-top: none;
+}
+.pray-request{
+  margin-left: 20px;
+}

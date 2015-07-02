@@ -10,9 +10,7 @@
   <!-- Button trigger modal --> 
   <div class="form-group">
     <label class="col-sm-1 control-label"></label>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-      Share with Your Prayer Requests
-    </button>
+
     </br>
   </div>
 
@@ -48,21 +46,33 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div>
-        <ul class="animate-container">
-          <li class="animate-repeat" ng-repeat="prayer_request in prayer_requests">
-             prayer request from {{prayer_request.fields.name}}: {{prayer_request.fields.request}}. {{prayer_request.fields.count}} people have beeing prayer for this.
-             <button class="btn btn-primary btn-xs" ng-click="addCount(prayer_request.pk)" >Pray</button>
-          </li>
-          <li class="animate-repeat" ng-if="prayer_requests.length == 0">
-            <strong>No paryer request</strong>
-          </li>
-        </ul>
-      </div>
-    </div> <!-- row -->
-  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-striped">
+      <tbody>
+      <thead>
+        <tr>
+          <th>    
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              Share with Your Prayer Requests
+            </button>
+          </th>
+        </tr>
+      </thead>
+        <tr ng-repeat="prayer_request in prayer_requests">
+          <td>
+            <div class="row">
+              <label class="prayer-name">{{prayer_request.fields.name}}</label>
+              <button class="btn btn-default btn-xs pull-right pary-for-it" ng-click="addCount(prayer_request.pk)" >I have prayed for this</button>
+              <span class="pray-count pull-right"><small>Prayed for {{prayer_request.fields.count}} times</small></span>
+            </div>
+            <div class="row">
+              <div class="pray-request">{{prayer_request.fields.request}}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <div>
 </body>
 {% endangularjs %}
 {% endblock %}
