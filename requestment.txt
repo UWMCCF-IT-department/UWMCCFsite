@@ -2,3 +2,4 @@ django
 djangular
 markdown
 django-filter
+django-angular
