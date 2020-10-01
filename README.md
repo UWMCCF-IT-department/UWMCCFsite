@@ -5,6 +5,8 @@ website for UWMCCF
 prayer-wall
 ================
 
+this project is very good for future 
+
 prayer-wall is a Django app to conduct prayer wall.
 Visitors post pray request and can pray for others.
 
